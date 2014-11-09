@@ -1,11 +1,33 @@
-*.sln
- *.userprefs
- *.csproj
- *.pidb
- *.unityproj
- /Library/FailedAssetImports.txt
- /Library/cache/
- /Library/previews/
- /Library/ScriptAssemblies
- /obj
- /Temp
+# =============== #
+# Unity generated #
+# =============== #
+ColorBlind/Temp/
+ColorBlind/Obj/
+ColorBlind/UnityGenerated/
+ColorBlind/Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ColorBlind/ExportedObj/
+ColorBlind/*.svd
+ColorBlind/*.userprefs
+ColorBlind/*.csproj
+ColorBlind/*.pidb
+ColorBlind/*.suo
+ColorBlind/*.sln
+ColorBlind/*.user
+ColorBlind/*.unityproj
+ColorBlind/*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
