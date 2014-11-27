@@ -3,13 +3,16 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    public void StartGame()
+    {
+        Debug.Log("testStart");
+        Application.LoadLevel("TestScene1");
+    }
+
+    public void StartTutorial() 
+    {
+        Debug.Log("testTutorial");
+        Application.LoadLevel("Tutorial");
+    }
 }
