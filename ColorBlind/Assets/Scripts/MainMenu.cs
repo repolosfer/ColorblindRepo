@@ -11,8 +11,9 @@ public class MainMenu : MonoBehaviour {
 
     public void StartGame()
     {
-        Debug.Log("testStart");
         var scene= _randomizer.GetRandomScene();
+        Params.sceneIds.Add(scene.Id);
+        Params.levelsPlayed++;
         Debug.Log(scene.name);
         Application.LoadLevel(scene.name);
     }
