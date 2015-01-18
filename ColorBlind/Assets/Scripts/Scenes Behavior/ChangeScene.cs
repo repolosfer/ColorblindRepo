@@ -18,6 +18,8 @@ public class ChangeScene : MonoBehaviour {
             Params.sceneIds.Clear();
             Params.levelsPlayed = 0;
             Params.sceneTime--;
+            Application.LoadLevel("VeryDificulty");
+            return;
         }
 
         var scene = _randomizer.GetRandomScene();
