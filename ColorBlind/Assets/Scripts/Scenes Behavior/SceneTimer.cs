@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class SceneTimer : MonoBehaviour {
 
@@ -10,15 +11,16 @@ public class SceneTimer : MonoBehaviour {
     private int displaySeconds;
     private int displayMinutes;
     private GameObject _paramsObject;
+    private GameObject timerText;
 
     public void Awake()
     {
         startTime = Time.time;
+        timerText = GameObject.Find("TimerText");
     }
 
     public void OnGUI()
     {
-        //make sure that your time is based on when this script was first called instead of when your game started;
 
         if (Params.sceneTime == 1)
         {
@@ -42,7 +44,8 @@ public class SceneTimer : MonoBehaviour {
         displayMinutes = roundedRestSeconds / 60;
 
         var text = String.Format("{0:00}:{1:00}", displayMinutes, displaySeconds);
-        //Debug.Log(text);
+        timerText.GetComponent<Text>().text = displaySeconds.ToString();
+
     }
 
     

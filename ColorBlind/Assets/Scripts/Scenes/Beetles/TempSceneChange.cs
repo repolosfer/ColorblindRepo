@@ -2,19 +2,22 @@
 using System.Collections;
 using System.Linq;
 
-public class ChangeScene : MonoBehaviour {
+public class TempSceneChange : MonoBehaviour {
 
     public SceneRandomizer _randomizer;
 
-    public ChangeScene() {
+    public TempSceneChange()
+    {
         _randomizer = new SceneRandomizer();
     }
 
-    public void ChangeLevel(){
+    public void ChangeLevel()
+    {
 
         Debug.Log(Params.sceneTime.ToString());
 
-        if(Params.levelsPlayed == Params.difficultyChange) {
+        if (Params.levelsPlayed == Params.difficultyChange)
+        {
             Debug.Log("changing difficulty");
             Params.sceneIds.Clear();
             Params.levelsPlayed = 0;
@@ -25,7 +28,8 @@ public class ChangeScene : MonoBehaviour {
 
         var scene = _randomizer.GetRandomScene();
 
-        while (Params.sceneIds.Any(x => x.Equals(scene.Id))) {
+        while (Params.sceneIds.Any(x => x.Equals(scene.Id)))
+        {
             scene = _randomizer.GetRandomScene();
         }
 
@@ -33,6 +37,11 @@ public class ChangeScene : MonoBehaviour {
         Params.sceneIds.Add(scene.Id);
         Params.levelsPlayed++;
         Application.LoadLevel(scene.name);
-        
+
+    }
+
+    public void Death()
+    {
+        Application.LoadLevel("FinishScreen");
     }
 }
