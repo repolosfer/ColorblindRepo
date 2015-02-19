@@ -12,6 +12,7 @@ public class SceneTimer : MonoBehaviour {
     private int displayMinutes;
     private GameObject _paramsObject;
     private GameObject timerText;
+    public string SceneName;
 
     public void Awake()
     {
@@ -37,7 +38,7 @@ public class SceneTimer : MonoBehaviour {
         if (roundedRestSeconds == 0)
         {
             Debug.Log("Time is Over");
-            Application.LoadLevel("FinishScreen");
+            Application.LoadLevel(SceneName + "Death");
         }
 
         displaySeconds = roundedRestSeconds % 60;

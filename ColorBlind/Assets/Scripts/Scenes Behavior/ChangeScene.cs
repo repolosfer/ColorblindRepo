@@ -15,7 +15,6 @@ public class ChangeScene : MonoBehaviour {
         Debug.Log(Params.sceneTime.ToString());
 
         if(Params.levelsPlayed == Params.difficultyChange) {
-            Debug.Log("changing difficulty");
             Params.sceneIds.Clear();
             Params.levelsPlayed = 0;
             Params.sceneTime--;
@@ -29,7 +28,6 @@ public class ChangeScene : MonoBehaviour {
             scene = _randomizer.GetRandomScene();
         }
 
-        Debug.Log(scene.name);
         Params.sceneIds.Add(scene.Id);
         Params.levelsPlayed++;
         Application.LoadLevel(scene.name);
