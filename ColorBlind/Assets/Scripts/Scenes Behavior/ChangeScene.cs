@@ -2,22 +2,31 @@
 using System.Collections;
 using System.Linq;
 
-public class ChangeScene : MonoBehaviour {
+public class ChangeScene : ScriptableObject {
 
     public SceneRandomizer _randomizer;
+
+    public bool isComingDeath;
 
     public ChangeScene() {
         _randomizer = new SceneRandomizer();
     }
 
-    public void ChangeLevel(){
+    public void ChangeLevel() {
 
-        Debug.Log(Params.sceneTime.ToString());
+        if (!isComingDeath)
+        {
+            Params.sceneIds.Add(Params.CurrentScene.Id);
+            Params.levelsPlayed++;
+        }
 
-        if(Params.levelsPlayed == Params.difficultyChange) {
+        Debug.Log(Params.levelsPlayed);
+
+        if (Params.levelsPlayed == Params.difficultyChange)
+        {
             Params.sceneIds.Clear();
             Params.levelsPlayed = 0;
-            Params.sceneTime--;
+            Params.difficulty++;
             Application.LoadLevel("VeryDificulty");
             return;
         }
@@ -28,9 +37,13 @@ public class ChangeScene : MonoBehaviour {
             scene = _randomizer.GetRandomScene();
         }
 
-        Params.sceneIds.Add(scene.Id);
-        Params.levelsPlayed++;
+        Params.CurrentScene = scene;
+        
         Application.LoadLevel(scene.name);
         
+    }
+
+    public void ChangeToLives() {
+        Application.LoadLevel("LivesScene");
     }
 }

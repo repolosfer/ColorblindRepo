@@ -13,38 +13,38 @@ public class SceneTimer : MonoBehaviour {
     private GameObject _paramsObject;
     private GameObject timerText;
     public string SceneName;
+    public int SceneTime;
 
     public void Awake()
     {
         startTime = Time.time;
         timerText = GameObject.Find("TimerText");
+        this.SceneTime = this.SceneTime - Params.difficulty;
     }
 
     public void OnGUI()
     {
-
-        if (Params.sceneTime == 1)
+        Params.TimeRemaining = SceneTime;
+        if (this.SceneTime == 1)
         {
             Application.LoadLevel("WinScene");
         }
-
+        
         var guiTime = Time.time - startTime;
 
-        restSeconds = Params.sceneTime - (guiTime);
+        restSeconds = this.SceneTime - (guiTime);
 
         //display the timer
         roundedRestSeconds = Mathf.CeilToInt(restSeconds);
-
+        Params.TimeRemaining = roundedRestSeconds;
         if (roundedRestSeconds == 0)
         {
-            Debug.Log("Time is Over");
+            
             Application.LoadLevel(SceneName + "Death");
         }
 
         displaySeconds = roundedRestSeconds % 60;
-        displayMinutes = roundedRestSeconds / 60;
 
-        var text = String.Format("{0:00}:{1:00}", displayMinutes, displaySeconds);
         timerText.GetComponent<Text>().text = displaySeconds.ToString();
 
     }
