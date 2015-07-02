@@ -46,4 +46,9 @@ public class ChangeScene : ScriptableObject {
     public void ChangeToLives() {
         Application.LoadLevel("LivesScene");
     }
+
+    public void ChangeToScore()
+    {
+        Application.LoadLevel("ScoreScene");
+    }
 }

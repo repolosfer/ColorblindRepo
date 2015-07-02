@@ -10,15 +10,9 @@ public class LivesHandler : MonoBehaviour {
 	void Start () {
         _changeScene = (ChangeScene)ScriptableObject.CreateInstance("ChangeScene");
 
-        if(!Application.loadedLevelName.Contains("Death"))
-        {
-            livesText = GameObject.Find("LivesNumberText");
-            livesText.GetComponent<Text>().text = Params.Lives.ToString();
-        }
-        else
-        {
-            Params.Lives--;
-        }
+        Params.Lives--;
+        livesText = GameObject.Find("LivesNumberText");
+        livesText.GetComponent<Text>().text = Params.Lives.ToString();
         
 	}
 
